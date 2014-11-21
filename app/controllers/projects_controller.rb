@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :manage_collaborators]
 
   # GET /projects
   # GET /projects.json
@@ -58,6 +58,10 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def manage_collaborators
+    @collaborators = @project.collaborators
   end
 
   private

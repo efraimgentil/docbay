@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @collaborators.each do |c| %>
+        <tr>
+            <td><%= c.username %></td>
+            <td></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>

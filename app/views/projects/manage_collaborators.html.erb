@@ -1,0 +1,14 @@
+
+<form method="post" action="<%= project_find_collaborator %>">
+    <%= tag(:input , :type => "hidden" , :name => request_forgery_protection_token.to_s,
+     :value => form_authenticity_token ) %>
+    <div>
+        <labeL for="busca">Buscar Usuário:</div>
+        <input id="busca" name="busca" value="<%= @busca %>" />
+        <button type="submit">Buscar</button>
+    </div>
+</form>
+
+<h3>Colaboradores</h3>
+<%= render "collaborators" %>
+
