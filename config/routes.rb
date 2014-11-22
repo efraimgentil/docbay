@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   resources :users
 
   resources :projects
-  get 'projects/:id/manage_collaborators' => 'projects#manage_collaborators', as: :projects_manage_collaborators
-  post 'projects/find_collaborator' => 'projects#find_collaborator', as: :projects_find_collaborator
+  get 'projects/:id/manage_collaborators' => 'projects#manage_collaborators', as: :manage_project_collaborators
+  post 'projects/:id/manage_collaborators/find_collaborator' => 'projects#find_collaborator', as: :find_project_collaborator
   root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

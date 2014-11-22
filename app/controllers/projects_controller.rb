@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :manage_collaborators]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :manage_collaborators , :find_collaborator]
 
   # GET /projects
   # GET /projects.json
@@ -62,6 +62,13 @@ class ProjectsController < ApplicationController
 
   def manage_collaborators
     @collaborators = @project.collaborators
+  end
+
+  def find_collaborator
+    @search = params[:search]
+    @resultSearch = User.find_users_not_in_the_project @search , @project.id
+    manage_collaborators()
+    respond_to do |f| f.html { render :manage_collaborators } end
   end
 
   private

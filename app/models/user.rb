@@ -19,5 +19,14 @@ class User < ActiveRecord::Base
       errors.add(:password_confirmation , "doesn't match") 
     end
   end
+
+  def self.username_like ( username )
+    self.where("username LIKE :username" , username: "#{username}%" ) 
+  end
+
+  def self.find_users_not_in_the_project ( username , project )
+    self.username_like( username )
+      .where("id NOT IN (?)" , UserProject.where("project_id = ?", 1).map{ |up| up.user_id } )
+  end
   
 end

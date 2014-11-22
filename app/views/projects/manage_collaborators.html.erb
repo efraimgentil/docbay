@@ -1,14 +1,37 @@
 
-<form method="post" action="<%= project_find_collaborator %>">
+<form method="post" action="<%= find_project_collaborator_path(@project) %>">
     <%= tag(:input , :type => "hidden" , :name => request_forgery_protection_token.to_s,
      :value => form_authenticity_token ) %>
     <div>
-        <labeL for="busca">Buscar Usuário:</div>
-        <input id="busca" name="busca" value="<%= @busca %>" />
+        <labeL for="search">Buscar Usuário:</div>
+        <input id="search" name="search" value="<%= @search %>" />
         <button type="submit">Buscar</button>
     </div>
 </form>
 
+<% if @resultSearch %>
+    <h3>Resultado busca</h3>
+    <% if @resultSearch.size > 0 %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            <% @resultSearch.each do |c| %>
+                <tr>
+                    <td><%= c.username %></td>
+                    <td><a href="">Adcionar ao projeto</a></td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+    <% else %>
+        <p>Nenhum registro encontrado</p>
+    <% end %>
+<% end %>
 <h3>Colaboradores</h3>
 <%= render "collaborators" %>
 
