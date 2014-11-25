@@ -9,12 +9,17 @@ class Project < ActiveRecord::Base
       up.user= user
       up.project=self
       self.user_project.push up
+      return
     end
     raise "User already in the project"
   end
 
   def collaborators
     self.user_project.map{ |up| up.user }
+  end
+  
+  def user_projects( user )
+    Project.joins(:user_project).where("user_project.user_id = ?" , user.id )
   end
 
 
