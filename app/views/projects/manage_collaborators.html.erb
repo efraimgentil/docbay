@@ -23,7 +23,7 @@
             <% @resultSearch.each do |c| %>
                 <tr>
                     <td><%= c.username %></td>
-                    <td><a href="">Adcionar ao projeto</a></td>
+                    <td><a href="<%= add_project_collaborators_path(@project , c.id)%>">Adicionar ao projeto</a></td>
                 </tr>
             <% end %>
             </tbody>
