@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
-  resources :users
+  root 'home#index'
 
+  resources :users
   resources :projects
+
   get 'projects/:id/manage_collaborators' => 'projects#manage_collaborators', as: :manage_project_collaborators
   post 'projects/:id/manage_collaborators/find_collaborator' => 'projects#find_collaborator', as: :find_project_collaborator
   get 'projects/:id/manage_collaborators/add_user/:user_id' => 'projects#add_user', as: :add_project_collaborators
-  root 'home#index'
+
+  get 'my-projects/' => 'my_projects#index', as: :my_projects
+  get 'project/:id' => 'my_projects#show_project', as: :show_my_project
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

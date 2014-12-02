@@ -1,6 +1,10 @@
 class Project < ActiveRecord::Base
+  scope :user_projects, -> ( user_id ) { 
+    joins(:user_project).where("user_project.user_id = ?" , user_id ) 
+  }
+
   has_many  :user_project
-  
+
   validates_presence_of :name
 
   def add_collaborator(user)
@@ -17,12 +21,5 @@ class Project < ActiveRecord::Base
   def collaborators
     self.user_project.map{ |up| up.user }
   end
-  
-  def user_projects( user )
-    Project.joins(:user_project).where("user_project.user_id = ?" , user.id )
-  end
-
-
-
   
 end
