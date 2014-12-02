@@ -1,13 +1,5 @@
-require "spec_helper"
+require 'rails_helper'
 
-describe Note do
-
-    describe "Constrains validations" do
-        it { should validate_presence_of :body }
-    end
-
-    describe "Relational mapping" do
-        it { should belong_to :project }
-    end
-
+RSpec.describe Note, :type => :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

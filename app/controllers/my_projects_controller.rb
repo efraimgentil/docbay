@@ -6,7 +6,12 @@ class MyProjectsController < ApplicationController
     end
 
     def show_project
-        @project = Project.user_projects( @user.id ).find(params[:id])
+        @project = Project.user_projects( @user.id ).find(params[:project_id])
+        if @project.nil? 
+            flash[:notice] = "You have no access to this project"
+            redirect_to root_path
+        end
+        render layout: "project"
     end
 
     private 

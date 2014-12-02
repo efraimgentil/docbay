@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+
   root 'home#index'
 
   resources :users
@@ -9,8 +11,12 @@ Rails.application.routes.draw do
   get 'projects/:id/manage_collaborators/add_user/:user_id' => 'projects#add_user', as: :add_project_collaborators
 
   get 'my-projects/' => 'my_projects#index', as: :my_projects
-  get 'project/:id' => 'my_projects#show_project', as: :show_my_project
+  get 'project/:project_id' => 'my_projects#show_project', as: :show_my_project
   
+  #resources :notes
+  scope 'project/:project_id' do
+    resources :notes
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
