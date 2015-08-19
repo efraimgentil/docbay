@@ -8,7 +8,31 @@
 </head>
 <body>
 
-<%= yield %>
+  <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <%= link_to 'DocBay', root_url %></a>
+                </li>
+                <li><a href="<%= users_path %>">Users</a></li>
+                <li><a href="<%= projects_path %>">Projects</a></li>
+                <li><a href="<%= my_projects_path %>">My Projects</a></li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
 
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <%= yield %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
 </body>
 </html>
