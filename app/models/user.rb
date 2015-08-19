@@ -8,13 +8,16 @@ class User < ActiveRecord::Base
   validate :password_match
   
   
-  attr_accessor :password_confirmation
+  attr_accessor :password_confirmation, :password
   
   def change_password
     self.update_attributes( @password )
   end
   
   def password_match
+    puts(" #{@password} P")
+    puts(" #{@password_confirmation} PC" )
+    puts( !@password.eql?(@password_confirmation) )
     if ( !@password.eql?(@password_confirmation) )
       errors.add(:password_confirmation , "doesn't match") 
     end
