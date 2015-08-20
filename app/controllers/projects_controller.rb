@@ -67,6 +67,7 @@ class ProjectsController < ApplicationController
 
   def find_collaborator
     @search = params[:search]
+    puts "Project #{@project.id}"
     @resultSearch = User.find_users_not_in_the_project @search , @project.id
     manage_collaborators()
     respond_to do |f| f.html { render :manage_collaborators } end

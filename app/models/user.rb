@@ -24,12 +24,12 @@ class User < ActiveRecord::Base
   end
 
   def self.username_like ( username )
-    self.where("username LIKE :username" , username: "#{username}%" ) 
+    self.where("upper(username) LIKE upper(:username)" , username: "%#{username}%" ) 
   end
 
   def self.find_users_not_in_the_project ( username , project )
     self.username_like( username )
-      .where("id NOT IN (?)" , UserProject.where("project_id = ?", 1).map{ |up| up.user_id } )
+      .where("id NOT IN (?)" , (UserProject.where("project_id = ?", 1).map{ |up| up.user_id }).push(0) )
   end
   
 end

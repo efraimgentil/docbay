@@ -8,18 +8,9 @@
 </head>
 <body>
 
-  <div id="wrapper">
+    <div id="wrapper">
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <%= link_to 'DocBay', root_url %></a>
-                </li>
-                <li><a href="<%= users_path %>">Users</a></li>
-                <li><a href="<%= projects_path %>">Projects</a></li>
-                <li><a href="<%= my_projects_path %>">My Projects</a></li>
-            </ul>
-        </div>
+        <%= render "layouts/menu" %>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
